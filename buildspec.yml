@@ -8,5 +8,5 @@ phases:
     commands:
        - npm run build
   post_build:
-    command:
+    commands:
       - aws s3 cp --recursive ./build s3://my-demo-pipeline-20240506/code/nodejs/

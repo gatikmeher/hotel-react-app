@@ -1,16 +1,15 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - npm install
   build:
-    pre_build:
-      commands:
-        - npm install
-    build:
-      commands:       
-        - npm run build
-    post_build:
-      commands:
-        - aws s3 cp --recursive ./build s3://my-demo-pipeline-20240506/code/nodejs/
+    commands:       
+      - npm run build
+  post_build:
+    commands:
+      - aws s3 cp --recursive ./build s3://my-demo-pipeline-20240506/code/nodejs/
   artifacts:
     # include all files required to run the application
     files:
